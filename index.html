@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://localhost:3002/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+<div id="messages">
+    <ul>
+
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var socket = io.connect('http://localhost:3002/');
+    socket.on('record-processed', function (data) {
+        console.log(data);
+        var results = JSON.parse(data);
+        var $div = $('#messages ul');
+        $div.append('<li>' + results['sobject']['Name'] + '</li>');
+    })
+
+    socket.on('connected')
+    socket.on('connect_failed', function(error){
+        console.log('Connection Failed:' + error.message);
+    });
+
+</script>
+</body>
+</html>
