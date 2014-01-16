@@ -10,3 +10,11 @@ Do so by using:<br>
 <code>npm install socket.io</code>
 </pre>
 
+or 
+
+<pre>
+<code>
+npm install nforce, faye, socket.io
+</code>
+</pre>
+
